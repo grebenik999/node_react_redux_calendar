@@ -1,4 +1,4 @@
 # node_react_redux_calendar
-# <p>for run both backend and frontend run next commands:</p>
+# for run both backend and frontend parts type next commands in terminal:
 # npm install
 # npm run dev
