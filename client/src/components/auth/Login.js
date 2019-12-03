@@ -36,11 +36,7 @@ const Login = ({ login, isAuthenticated }) => {
         <p>
           <i className="fas fa-user"></i> Sign into Your Account
         </p>
-        <Form
-          className="register-form"
-          onSubmit={e => onSubmit(e)}
-          className="login-form"
-        >
+        <Form className="register-form" onSubmit={e => onSubmit(e)}>
           <Form.Item>
             <Input
               prefix={

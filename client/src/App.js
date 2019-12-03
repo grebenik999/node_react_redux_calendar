@@ -22,7 +22,6 @@ const App = () => {
   useEffect(() => {
     store.dispatch(loadUser());
   }, []);
-
   return (
     <Provider store={store}>
       <Router>
@@ -31,9 +30,9 @@ const App = () => {
           <Route exact path="/" component={Landing} />
           <Alert />
           <Switch>
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/dashboard" component={Dashboard} />
+            <Route path="/register" component={Register} />
+            <Route path="/login" component={Login} />
+            <Route path="/dashboard" component={Dashboard} />
           </Switch>
         </Fragment>
       </Router>

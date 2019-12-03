@@ -1,11 +1,12 @@
 @import "~antd/dist/antd.css";
+@import "~@fullcalendar/core/main.css";
 
 .badge {
   font-size: 0.8rem;
   padding: 0.1rem;
   text-align: center;
   margin: 0.3rem;
-  background: var(--light-color);
+  background: #c4c4c4;
   color: #333;
 }
 
@@ -21,7 +22,7 @@
 .bg-primary,
 .badge-primary,
 .alert-primary {
-  background: var(--primary-color);
+  background: blue;
   color: #fff;
 }
 
@@ -29,23 +30,15 @@
 .bg-light,
 .badge-light,
 .alert-light {
-  background: var(--light-color);
+  background: #c8c8c8;
   color: #333;
-}
-
-.btn-dark,
-.bg-dark,
-.badge-dark,
-.alert-dark {
-  background: var(--dark-color);
-  color: #fff;
 }
 
 .btn-danger,
 .bg-danger,
 .badge-danger,
 .alert-danger {
-  background: var(--danger-color);
+  background: red;
   color: #fff;
 }
 
@@ -53,7 +46,7 @@
 .bg-success,
 .badge-success,
 .alert-success {
-  background: var(--success-color);
+  background: green;
   color: #fff;
 }
 

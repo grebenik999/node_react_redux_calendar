@@ -42,7 +42,6 @@ const Navbar = ({ isAuthenticated }) => {
       </Header>
     );
   }
-
   return (
     <Header className="header">
       <div className="logo" />
