@@ -10,24 +10,27 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    position: "",
     password: "",
     password2: ""
   });
 
-  const { name, email, password, password2 } = formData;
+  const { name, email, position, password, password2 } = formData;
 
-  const onChange = e =>
+  const onChange = e => {
+    console.log(e.target.name);
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
+  };
 
   const onSubmit = e => {
     e.preventDefault();
     if (password !== password2) {
       setAlert("Password you entered doesnt match", "danger");
     } else {
-      register({ name, email, password });
+      register({ name, email, position, password });
     }
   };
 
@@ -64,6 +67,17 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
               This site uses Gravatar so if you want a profile image, use a
               Gravatar email
             </small>
+          </Form.Item>
+          <Form.Item>
+            <Input
+              prefix={
+                <Icon type="idcard" style={{ color: "rgba(0,0,0,.25)" }} />
+              }
+              placeholder="Position"
+              name="position"
+              value={position}
+              onChange={e => onChange(e)}
+            />
           </Form.Item>
           <Form.Item>
             <Input

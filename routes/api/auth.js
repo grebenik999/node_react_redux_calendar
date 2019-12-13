@@ -16,7 +16,7 @@ router.get("/", auth, async (req, res) => {
     const user = await User.findById(req.user.id).select("-password");
     res.json(user);
   } catch (error) {
-    console.error(error.message);
+    console.error("error auth1", error.message);
     res.status(500).send("Server error");
   }
 });
@@ -36,7 +36,7 @@ router.post(
       res.status(400).json({ errors: errors.array() });
     }
 
-    const { email, password } = req.body;
+    const { email, position, password } = req.body;
 
     try {
       //See if user exist
@@ -75,7 +75,7 @@ router.post(
         res.json({ token });
       });
     } catch (err) {
-      console.error(err.message);
+      console.error("Error auth 2", err.message);
       res.status(500).send("Server error");
     }
   }

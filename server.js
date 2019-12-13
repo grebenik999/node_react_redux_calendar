@@ -14,11 +14,12 @@ const db = require("./config/keys").mongoURI;
 mongoose
   .set("useUnifiedTopology", true)
   .set("useCreateIndex", true)
+  .set("useFindAndModify", false)
   .connect(db, {
     useNewUrlParser: true
   })
   .then(() => console.log("connected to Mongo"))
-  .catch(error => console.log("error", error));
+  .catch(error => console.log("error from server.js", error));
 
 //Define routes
 app.use("/api/items", require("./routes/api/items"));

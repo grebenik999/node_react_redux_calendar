@@ -34,7 +34,9 @@ const Sidebar = () => {
           <Menu.Item key="2">
             <Link to={`${url}/roles`}>Роли</Link>
           </Menu.Item>
-          <Menu.Item key="3">Регионы</Menu.Item>
+          <Menu.Item key="3">
+            <Link to={`${url}/locations`}>Регионы</Link>
+          </Menu.Item>
         </SubMenu>
         <SubMenu
           key="sub2"

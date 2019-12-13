@@ -32,7 +32,7 @@ router.post(
       res.status(400).json({ errors: errors.array() });
     }
 
-    const { name, email, password, position, card } = req.body;
+    const { name, email, position, password, card } = req.body;
 
     try {
       //See if user exist
@@ -55,12 +55,16 @@ router.post(
         d: "mm"
       });
 
+      // Set a default user role
+      const role = "user";
+
       user = new User({
         name,
         email,
         password,
         avatar,
         position,
+        role,
         card
       });
 
@@ -90,5 +94,89 @@ router.post(
     }
   }
 );
+
+// @route  GET api/users
+// @desc   GET all users
+// @access public
+
+router.get("/", (req, res) => {
+  User.find().then(users => {
+    return res.json(users);
+  });
+});
+
+// @route  GET api/users
+// @desc   GET single users
+// @access public
+
+router.get("/:id", (req, res) => {
+  User.findById(req.params.id).then(user => {
+    return res.json(user);
+  });
+});
+
+// @route  PUT api/users
+// @desc   Update the user
+// @access public
+
+router.put("/:id", (req, res) => {
+  User.findByIdAndUpdate(req.params.id, { $set: req.body }).then(user => {
+    if (user) {
+      user.save();
+      return res.json(user);
+    }
+  });
+});
+
+router.delete("/:id", (req, res) => {
+  User.findByIdAndDelete(req.params.id).then(user => {
+    if (user) {
+      user.delete();
+    }
+  });
+  return res.send("Deleted");
+});
+
+// router.put(
+//   "/",
+//   [
+//     check("name", "Обязательное поле")
+//       .not()
+//       .isEmpty(),
+//     check("email", "Пожалуйста напишите валидный email").isEmail()
+//   ],
+//   async (req, res) => {
+//     const errors = validationResult(req);
+//     if (!errors.isEmpty()) {
+//       res.status(400).json({ errors: errors.array() });
+//     }
+
+//     const { name, email, position, password, role, card } = req.body;
+
+//     try {
+//       //See if user exist
+//       let user = await User.find(id);
+//       if (user) {
+//         user = new User({
+//           name,
+//           email,
+//           password,
+//           avatar,
+//           position,
+//           role,
+//           card
+//         });
+
+//         // Save a user to DB
+//         await user.save();
+//       } else {
+//         res.status(500).send("Account not found.");
+//       }
+//     } catch (err) {
+//       console.error(err.message);
+//       res.status(500).send("Account not found.");
+//     }
+//   }
+// );
 
 module.exports = router;

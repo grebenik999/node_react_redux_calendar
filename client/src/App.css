@@ -109,3 +109,118 @@
 .large.text-primary {
   padding-top: 5rem;
 }
+
+/* Profile Section */
+
+.profile-page {
+  background-image: url("https://images.unsplash.com/photo-1557053819-aa6046add523?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=889&q=80");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.navbar-nav {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 20px 0 0;
+  list-style: none;
+}
+
+.nav-item {
+  padding: 0 15px 0 15px;
+  font-size: 1.25rem;
+}
+
+.nav-link {
+  color: #372924;
+}
+
+img {
+  max-width: 100%;
+  border-radius: 1px;
+}
+
+.img-raised {
+  box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.3);
+}
+
+.page-header {
+  min-height: 650px;
+}
+
+.photo-container {
+  width: 183px;
+  height: 183px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+  box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.3);
+}
+
+.title {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 2rem;
+}
+
+.description,
+.category {
+  text-align: center;
+  font-size: 1.25rem;
+  color: #000;
+  font-weight: bold;
+}
+
+h5.description {
+  max-width: 700px;
+  margin: 20px auto 75px;
+}
+
+.nav-align-center {
+  margin-top: 30px;
+}
+
+.content {
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+.social-description {
+  display: inline-block;
+  max-width: 150px;
+  width: 145px;
+  text-align: center;
+  margin: 15px 0 0px;
+}
+
+.social-description h2 {
+  margin-bottom: 15px;
+}
+
+.social-description p {
+  color: #111;
+  font-size: 1.2rem;
+}
+
+/* Role Section */
+.role_section {
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.role_header {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+  margin: 20px 0;
+}
+
+.role_header h1 {
+  font-size: 1rem;
+}
+
+.role_list {
+  padding: 0 15px;
+}

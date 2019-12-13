@@ -20,6 +20,9 @@ const UserSchema = new mongoose.Schema({
   position: {
     type: String
   },
+  role: {
+    type: String
+  },
   card: {
     type: String
   }

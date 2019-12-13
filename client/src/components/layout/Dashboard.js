@@ -1,15 +1,24 @@
-import React from "react";
-import { Route, Switch, useRouteMatch } from "react-router-dom";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import store from "../../store";
 import { Layout } from "antd";
 import Sidebar from "./Sidebar";
-import Calendar from "../calendar/Calendar";
-import UserRoles from "../roles/UserRoles";
 import Profile from "../user/Profile";
+import UserRoles from "../roles/Roles";
+import Calendar from "../calendar/Calendar";
+import Locations from "../locations/Locations";
+import { fetchUsers } from "../../actions/userList";
+import { Route, Switch, useRouteMatch } from "react-router-dom";
 
 const { Content } = Layout;
 
-const Dashboard = () => {
+const Dashboard = ({ users }) => {
   let { path } = useRouteMatch();
+
+  //Get all users
+  useEffect(() => {
+    store.dispatch(fetchUsers());
+  }, []);
 
   return (
     <Layout>
@@ -19,9 +28,9 @@ const Dashboard = () => {
           <Content
             style={{
               background: "#fff",
-              padding: 24,
+              padding: 0,
               margin: "20px 0 0 0",
-              minHeight: 700
+              minHeight: 500
             }}
           >
             <Switch>
@@ -35,7 +44,10 @@ const Dashboard = () => {
                 <Calendar />
               </Route>
               <Route path={`${path}/roles`}>
-                <UserRoles />
+                <UserRoles users={users} />
+              </Route>
+              <Route path={`${path}/locations`}>
+                <Locations />
               </Route>
             </Switch>
           </Content>
@@ -45,4 +57,8 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+const mapStateToProps = state => ({
+  users: state.users
+});
+
+export default connect(mapStateToProps)(Dashboard);
