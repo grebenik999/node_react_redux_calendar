@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import uuid from "uuid";
-import { Table, Modal } from "antd";
+import { Table } from "antd";
 import { columns } from "./columns";
 import ModalUpdateRole from "./ModalUpdateRole";
 
