@@ -58,7 +58,7 @@ const Dashboard = ({ users }) => {
 };
 
 const mapStateToProps = state => ({
-  users: state.users
+  users: state.userList.users
 });
 
 export default connect(mapStateToProps)(Dashboard);

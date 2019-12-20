@@ -1,22 +1,41 @@
-import React, { useState } from "react";
+import React from "react";
+import store from "../../store";
 import { Modal, Button } from "antd";
+import { connect } from "react-redux";
+import FormUpdate from "./FormUpdate";
+import { changeRole } from "../../actions/updateRole";
 
-const ModalUpdateRole = ({ visible, closeModal }) => {
+const ModalUpdateRole = ({ user, visible, closeModal }) => {
+  // Submit updated User Role
+  const updateRole = () => {
+    // Update the role
+    store.dispatch(changeRole(user));
+    closeModal();
+  };
+
   return (
     <div>
       <Modal
         title="Update the role"
         centered
         visible={visible}
-        // onOk={() => setModalVisible(false)}
-        onCancel={closeModal}
+        footer={[
+          <Button key="cancel" onClick={closeModal}>
+            Отмена
+          </Button>,
+          <Button key="submit" type="primary" onClick={updateRole}>
+            Сохранить
+          </Button>
+        ]}
       >
-        <p>some contents...</p>
-        <p>some contents...</p>
-        <p>some contents...</p>
+        <FormUpdate user={user} />
       </Modal>
     </div>
   );
 };
 
-export default ModalUpdateRole;
+const mapStateToProps = state => ({
+  updateRole: state.updateRole
+});
+
+export default connect(mapStateToProps)(ModalUpdateRole);

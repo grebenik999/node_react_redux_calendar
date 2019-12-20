@@ -17,28 +17,28 @@ export const columns = openModal => [
   },
   {
     title: "Роль в системе",
-    dataIndex: "roles",
-    key: "roles",
-    render: roles => (
-      <span>
-        {roles.map(role => {
-          let color = role.length > 4 ? "geekblue" : "green";
-          return (
+    dataIndex: "role",
+    key: "role",
+    render: role => {
+      let color = role.length > 4 ? "geekblue" : "green";
+      return (
+        <span>
+          {
             <Tag color={color} key={role}>
               {role.toUpperCase()}
             </Tag>
-          );
-        })}
-      </span>
-    )
+          }
+        </span>
+      );
+    }
   },
   {
     title: "Действия",
     key: "action",
     dataIndex: "action",
-    render: () => (
+    render: (_id, user) => (
       <span>
-        <Link to="#" key="update" onClick={openModal}>
+        <Link to="#" key="update" onClick={() => openModal(user)}>
           update
         </Link>
         <Divider type="vertical" />

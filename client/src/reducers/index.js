@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
 import alert from "./alert";
 import auth from "./auth";
-import users from "./userList";
+import userList from "./userList";
 
 export default combineReducers({
   alert,
   auth,
-  users
+  userList
 });

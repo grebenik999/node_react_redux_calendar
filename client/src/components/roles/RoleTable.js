@@ -6,16 +6,22 @@ import ModalUpdateRole from "./ModalUpdateRole";
 
 const RoleTable = props => {
   const [visible, setVisible] = useState(false);
+  const [choosenUser, setChoosenUser] = useState(null);
+
+  // Get all the users to the table
   const data = props.users.map(user => ({
-    key: user.id,
+    key: user._id,
     name: user.name,
     email: user.email,
     position: user.position,
-    roles: [user.role]
+    role: user.role
   }));
 
-  const openModal = () => {
+  // Open Modal and select the user for update
+  const openModal = user => {
     setVisible(true);
+    // user id
+    setChoosenUser(user);
   };
 
   const closeModal = () => {
@@ -29,7 +35,11 @@ const RoleTable = props => {
         dataSource={data}
         rowKey={() => uuid()}
       />
-      <ModalUpdateRole visible={visible} closeModal={closeModal} />
+      <ModalUpdateRole
+        user={choosenUser}
+        visible={visible}
+        closeModal={closeModal}
+      />
     </Fragment>
   );
 };
