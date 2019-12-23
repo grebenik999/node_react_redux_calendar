@@ -148,8 +148,8 @@ router.put("/:id", (req, res) => {
 router.delete("/:id", (req, res) => {
   User.findByIdAndDelete(req.params.id).then(user => {
     user.remove();
+    return res.json(user);
   });
-  return res.send("Deleted");
 });
 
 module.exports = router;

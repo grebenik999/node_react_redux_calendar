@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import store from "../../store";
 import { Row, Col } from "antd";
 import RoleTable from "./RoleTable";
+import { fetchUsers } from "../../actions/userList";
 
-const UserRoles = props => {
+const UserRoles = ({ users }) => {
+  //Get all users
+  useEffect(() => {
+    store.dispatch(fetchUsers());
+  }, []);
   return (
     <Row>
       <Col>
@@ -11,7 +18,7 @@ const UserRoles = props => {
             <h1>Выберите сотрудника для предоставления ему необходимой роли</h1>
           </div>
           <div className="role_list">
-            <RoleTable users={props.users} />
+            <RoleTable users={users} />
           </div>
         </section>
       </Col>
@@ -19,4 +26,8 @@ const UserRoles = props => {
   );
 };
 
-export default UserRoles;
+const mapStateToProps = state => ({
+  users: state.userList.users
+});
+
+export default connect(mapStateToProps)(UserRoles);

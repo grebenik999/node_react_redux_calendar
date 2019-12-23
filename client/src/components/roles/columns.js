@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Divider, Tag } from "antd";
 
-export const columns = openModal => [
+export const columns = (openModal, handleDeleteUser) => [
   {
     title: "Сотрудник",
     dataIndex: "name",
@@ -42,7 +42,7 @@ export const columns = openModal => [
           update
         </Link>
         <Divider type="vertical" />
-        <Link to="#" key="delete">
+        <Link to="#" key="delete" onClick={() => handleDeleteUser(user.key)}>
           Delete
         </Link>
       </span>

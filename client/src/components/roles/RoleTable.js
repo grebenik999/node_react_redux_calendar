@@ -1,4 +1,7 @@
 import React, { Fragment, useState } from "react";
+import store from "../../store";
+import { connect } from "react-redux";
+import { deleteUser } from "../../actions/userList";
 import uuid from "uuid";
 import { Table } from "antd";
 import { columns } from "./columns";
@@ -28,10 +31,14 @@ const RoleTable = props => {
     setVisible(false);
   };
 
+  const handleDeleteUser = id => {
+    store.dispatch(deleteUser(id));
+  };
+
   return (
     <Fragment>
       <Table
-        columns={columns(openModal)}
+        columns={columns(openModal, handleDeleteUser)}
         dataSource={data}
         rowKey={() => uuid()}
       />
@@ -44,4 +51,4 @@ const RoleTable = props => {
   );
 };
 
-export default RoleTable;
+export default connect(null)(RoleTable);
