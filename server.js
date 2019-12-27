@@ -22,10 +22,13 @@ mongoose
   .catch(error => console.log("error from server.js", error));
 
 //Define routes
-app.use("/api/items", require("./routes/api/items"));
 app.use("/api/auth", require("./routes/api/auth"));
 app.use("/api/users", require("./routes/api/users"));
+app.use("/api/items", require("./routes/api/items"));
+app.use("/api/location", require("./routes/api/area"));
+app.use("/api/location", require("./routes/api/shops"));
 app.use("/api/profile", require("./routes/api/profile"));
+app.use("/api/location", require("./routes/api/location"));
 app.use("/api/dashboard", require("./routes/api/dashboard"));
 
 const port = process.env.PORT || 5000;

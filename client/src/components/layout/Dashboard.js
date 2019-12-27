@@ -4,7 +4,7 @@ import Sidebar from "./Sidebar";
 import Profile from "../user/Profile";
 import UserRoles from "../roles/Roles";
 import Calendar from "../calendar/Calendar";
-import Locations from "../locations/Locations";
+import Regions from "../../containers/Regions";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 
 const { Content } = Layout;
@@ -39,7 +39,7 @@ const Dashboard = () => {
                 <UserRoles />
               </Route>
               <Route path={`${path}/locations`}>
-                <Locations />
+                <Regions />
               </Route>
             </Switch>
           </Content>
