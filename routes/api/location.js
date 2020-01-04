@@ -12,7 +12,10 @@ router.post("/region", (req, res) => {
     name: req.body.name
   });
 
-  newRegion.save().then(region => res.json(region));
+  newRegion.save().then(region => {
+    console.log("Region was created successfully");
+    res.json(region);
+  });
 });
 
 // @route  GET api/location/region

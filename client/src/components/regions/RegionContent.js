@@ -43,20 +43,25 @@ const RegionContent = props => {
     return <Table columns={columns} dataSource={data} pagination={false} />;
   };
 
+  // Areas data
   const columns = [
     { title: "Регион", dataIndex: "region", key: "region" },
     {
       title: "Действия",
       key: "operation",
-      render: () => <Link to="#">Update</Link>
+      render: () => <Link to="#">Изменить</Link>
     }
   ];
 
+  // Get a list of region Areas from props.areasByRegion
+
   const data = [];
-  for (let i = 0; i < 2; ++i) {
+
+  let eArr = props.areasByRegion.values();
+  for (let area of eArr) {
     data.push({
-      key: i,
-      region: "Запорожье"
+      key: area._id,
+      region: area.name
     });
   }
 

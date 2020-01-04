@@ -29,8 +29,8 @@ router.post("/region/area", (req, res) => {
 // @desc   GET all areas from a certain region
 // @access public
 
-router.get("/region/area", async (req, res) => {
-  await Area.find({ region: req.body.region })
+router.get("/region/:id/area", async (req, res) => {
+  await Area.find({ region: req.params.id })
     .populate("region")
     .exec(function(err, areas) {
       if (err)

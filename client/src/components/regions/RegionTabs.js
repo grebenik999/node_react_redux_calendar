@@ -1,27 +1,59 @@
-import React from "react";
-import { Tabs, Button } from "antd";
+import React, { Fragment, useState, useEffect } from "react";
+import { Tabs, Button, Icon } from "antd";
 import RegionContent from "./RegionContent";
+import ModalRegion from "./ModalRegion";
 
 const { TabPane } = Tabs;
 
-const operations = <Button>Добавить регион</Button>;
+const RegionTabs = props => {
+  const [active, setActive] = useState(null);
+  const { regions } = props.regions;
 
-const RegionTabs = () => {
+  const operations = <Button onClick={props.openModal}>Добавить Регион</Button>;
+
+  // Set default tab with data
+  useEffect(() => {
+    let arr1 = regions[0];
+    if (!arr1) {
+      return undefined;
+    }
+    if (active === null) {
+      setActive(arr1._id);
+      props.areaByRegion(arr1._id);
+    }
+  });
+
+  const getAreasByRegion = e => {
+    props.areaByRegion(e);
+    setActive(e);
+  };
+
   return (
-    <Tabs tabBarExtraContent={operations}>
-      <TabPane tab="Юг" key="1">
-        <RegionContent content="1" />
-      </TabPane>
-      <TabPane tab="Запад" key="2">
-        <RegionContent content="2" />
-      </TabPane>
-      <TabPane tab="Центр" key="3">
-        <RegionContent content="3" />
-      </TabPane>
-      <TabPane tab="Восток" key="4">
-        <RegionContent content="4" />
-      </TabPane>
-    </Tabs>
+    <Fragment>
+      <ModalRegion
+        visible={props.visible}
+        closeModal={props.closeModal}
+        newRegion={props.newRegion}
+      />
+      <Tabs
+        tabBarExtraContent={operations}
+        activeKey={active}
+        onChange={e => getAreasByRegion(e)}
+      >
+        {regions ? (
+          regions.map(region => (
+            <TabPane tab={region.name} key={region._id}>
+              <RegionContent
+                content={region._id}
+                areasByRegion={props.areasByRegion}
+              />
+            </TabPane>
+          ))
+        ) : (
+          <Icon type="loading" />
+        )}
+      </Tabs>
+    </Fragment>
   );
 };
 

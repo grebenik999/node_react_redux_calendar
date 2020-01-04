@@ -22,7 +22,6 @@ const FormUpdate = props => {
               placeholder="Username"
               name="name"
               value={user.name}
-              //   onChange={e => onChange(e)}
             />
           </Form.Item>
           <Form.Item>
@@ -31,7 +30,6 @@ const FormUpdate = props => {
               placeholder="Email"
               name="email"
               value={user.email}
-              //   onChange={e => onChange(e)}
             />
           </Form.Item>
           <Form.Item>
@@ -42,7 +40,6 @@ const FormUpdate = props => {
               placeholder="Position"
               name="position"
               value={user.position}
-              //   onChange={e => onChange(e)}
             />
           </Form.Item>
           <Form.Item>
