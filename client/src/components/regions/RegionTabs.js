@@ -23,6 +23,7 @@ const RegionTabs = props => {
     }
   });
 
+  // get the area by click on the tab
   const getAreasByRegion = e => {
     props.areaByRegion(e);
     setActive(e);
@@ -43,10 +44,7 @@ const RegionTabs = props => {
         {regions ? (
           regions.map(region => (
             <TabPane tab={region.name} key={region._id}>
-              <RegionContent
-                content={region._id}
-                areasByRegion={props.areasByRegion}
-              />
+              <RegionContent areasByRegion={props.areasByRegion} />
             </TabPane>
           ))
         ) : (

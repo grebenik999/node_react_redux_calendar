@@ -53,8 +53,7 @@ const RegionContent = props => {
     }
   ];
 
-  // Get a list of region Areas from props.areasByRegion
-
+  // Get a list of Areas belongs to certain Region from props.areasByRegion
   const data = [];
 
   let eArr = props.areasByRegion.values();
